@@ -1,0 +1,17 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 2026-04-22-001-tmc-catalog-data
+      author: Olga-Starykova
+
+      changes:
+
+        - loadData:
+            file: db/changelog/002-data/tmc-catalog.csv
+            tableName: tmc_catalog
+            separator: ;
+            encoding: UTF-8
+
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('tmc_catalog','id'),
+              (SELECT MAX(id) FROM tmc_catalog));

@@ -1,0 +1,26 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 2026-04-21-005-additional-info
+      author: Olga-Starykova
+      changes:
+        - createTable:
+            tableName: additional_info
+            columns:
+              - column:
+                  name: id_steel
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    foreignKeyName: fk_additional_info_steel
+                    referencedTableName: steel_grades
+                    referencedColumnNames: id
+
+              - column:
+                  name: header_text
+                  type: varchar(500)
+
+              - column:
+                  name: footer_text
+                  type: varchar(500)

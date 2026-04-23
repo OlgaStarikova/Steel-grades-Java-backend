@@ -1,0 +1,73 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 2026-04-21-001-steel-grades-groups-data
+      author: Olga-Starykova
+      changes:
+
+        - insert:
+            tableName: steel_grades_groups
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: name
+                  value: Сталь Основні виливки
+
+        - insert:
+            tableName: steel_grades_groups
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: name
+                  value: Чавун
+
+        - insert:
+            tableName: steel_grades_groups
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 3
+              - column:
+                  name: name
+                  value: 75Х28Н2СЛ ДСП з бр н
+
+        - insert:
+            tableName: steel_grades_groups
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 4
+              - column:
+                  name: name
+                  value: Сталь ДСТУ 8781
+
+        - insert:
+            tableName: steel_grades_groups
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 5
+              - column:
+                  name: name
+                  value: Алюміній
+
+        - insert:
+            tableName: steel_grades_groups
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 6
+              - column:
+                  name: name
+                  value: Бронза
+
+        - sql:
+            sql: >
+              SELECT setval(
+                pg_get_serial_sequence('steel_grades_groups','id'),
+                (SELECT COALESCE(MAX(id), 1) FROM steel_grades_groups)
+              );

@@ -1,0 +1,31 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 2026-04-21-002-steel-grades
+      author: Olga-Starykova
+      changes:
+        - createTable:
+            tableName: steel_grades
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: group_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_steel_group
+                    referencedTableName: steel_grades_groups
+                    referencedColumnNames: id

@@ -1,0 +1,17 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 2026-04-22-004-steel-recipes-data
+      author: Olga-Starykova
+
+      changes:
+
+        - loadData:
+            file: db/changelog/002-data/steel-recipes.csv
+            tableName: steel_recipes
+            separator: ;
+            encoding: UTF-8
+
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('steel_recipes','id'),
+              (SELECT MAX(id) FROM steel_recipes));

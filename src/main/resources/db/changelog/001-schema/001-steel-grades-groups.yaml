@@ -1,0 +1,22 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 2026-04-21-001-steel-grades-groups
+      author: Olga-Starykova
+      changes:
+        - createTable:
+            tableName: steel_grades_groups
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

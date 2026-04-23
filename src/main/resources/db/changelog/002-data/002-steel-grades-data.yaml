@@ -1,0 +1,19 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 2026-04-21-002-steel-grades-data
+      author: Olga-Starykova
+      changes:
+
+        - loadData:
+            file: db/changelog/002-data/steel-grades.csv
+            tableName: steel_grades
+            separator: ;
+            encoding: UTF-8
+
+        - sql:
+            sql: >
+              SELECT setval(
+                pg_get_serial_sequence('steel_grades','id'),
+                (SELECT COALESCE(MAX(id),1) FROM steel_grades)
+              );

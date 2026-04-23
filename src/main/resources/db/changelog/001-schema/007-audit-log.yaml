@@ -1,0 +1,62 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 2026-04-21-007-create-audit-log
+      author: Olga-Starykova
+      changes:
+        - createTable:
+            tableName: audit_log
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: table_name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: record_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_audit_user
+                    referencedTableName: users
+                    referencedColumnNames: id
+
+              - column:
+                  name: action_type
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: change_timestamp
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: old_data
+                  type: jsonb
+
+              - column:
+                  name: new_data
+                  type: jsonb
+
+              - column:
+                  name: comment
+                  type: text

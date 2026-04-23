@@ -1,0 +1,46 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 2026-04-21-003-tmc-catalog
+      author: Olga-Starykova
+      changes:
+        - createTable:
+            tableName: tmc_catalog
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: id_tmc_kl
+                  type: varchar(13)
+                  constraints:
+                    nullable: true
+
+              - column:
+                  name: vid
+                  type: int
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: marka
+                  type: varchar(255)
+
+              - column:
+                  name: gost
+                  type: varchar(255)
+
+              - column:
+                  name: ei
+                  type: varchar(50)
