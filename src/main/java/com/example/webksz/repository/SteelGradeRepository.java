@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface SteelGradeRepository extends JpaRepository<SteelGrade, Long> {
     List<SteelGrade> findByGroupId(Long groupId);
+    boolean existsByNameIgnoreCase(String name);
+    boolean existsByNameIgnoreCaseAndIdNot(String name, Long id);
 }
